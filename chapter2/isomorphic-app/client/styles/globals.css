@@ -1,0 +1,25 @@
+a {
+   text-decoration: none;
+   color: inherit;
+}
+.page-container {
+   height: 100vh;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: #E5E7EB;
+   overflow: hidden;
+}
+.main-container {
+   flex:1; 
+   display: flex;
+   overflow: hidden;
+   overflow-y: auto;
+}
+.main-content{
+   margin: 32px;
+   display:flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
