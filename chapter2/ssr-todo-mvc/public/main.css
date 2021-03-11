@@ -1,0 +1,14 @@
+.app {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: 0 auto;   
+}
+
+.footer {
+    display:flex;
+    justify-content: center;
+    margin: 10px 0;
+}

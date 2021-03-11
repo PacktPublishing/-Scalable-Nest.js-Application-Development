@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    .app
+      h1 Todo List MVC
+      if !items.length
+        div You have no todo items.    
+      ul
+        each val, index in items
+          li= index + ': ' + val
+        
+    include includes/footer.pug
