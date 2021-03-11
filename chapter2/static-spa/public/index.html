@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recourse – Learning reimagined.</title>
+    <link rel="preload" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" as="style"
+    />
+    <link rel="preload" href="https://unpkg.com/lit-html?module" as="script" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+  </head>
+  <body>
+    <script type="module">
+      import { html, render } from 'https://unpkg.com/lit-html?module';
+      import renderPage from './main.js';
+
+      // Render app on page load
+      window.addEventListener('DOMContentLoaded', function(event) {
+        renderPage(html, render);
+      });
+      // Render app page on navigate
+      window.addEventListener('hashchange', function(event) {
+        renderPage(html, render);
+      });
+    </script>
+  </body>
+</html>
