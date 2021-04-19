@@ -1,0 +1,329 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Shopsite REST API",
+    "description": "",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateProductDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Galazy Tab S7"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet."
+          },
+          "price": {
+            "type": "number",
+            "example": 799.99
+          },
+          "stock": {
+            "type": "number",
+            "example": 100
+          },
+          "category": {
+            "type": "string",
+            "example": "tablet"
+          },
+          "brand": {
+            "type": "string",
+            "example": "Samsung"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "USD"
+          },
+          "thumbnail": {
+            "type": "string",
+            "example": "/images/tablet.png"
+          },
+          "details": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet, consectur elit..."
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "price",
+          "stock",
+          "category",
+          "brand",
+          "currencyCode",
+          "thumbnail",
+          "details"
+        ]
+      },
+      "ProductDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "a1234-b1234-c1234-d1234"
+          },
+          "name": {
+            "type": "string",
+            "example": "Galazy Tab S7"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet."
+          },
+          "price": {
+            "type": "number",
+            "example": 799.99
+          },
+          "stock": {
+            "type": "number",
+            "example": 100
+          },
+          "formattedPrice": {
+            "type": "string",
+            "example": "$799.99"
+          },
+          "category": {
+            "type": "string",
+            "example": "tablet"
+          },
+          "brand": {
+            "type": "string",
+            "example": "Samsung"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "USD"
+          },
+          "thumbnail": {
+            "type": "string",
+            "example": "/images/tablet.png"
+          },
+          "details": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet, consectur elit..."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "price",
+          "stock",
+          "formattedPrice",
+          "category",
+          "brand",
+          "currencyCode",
+          "thumbnail",
+          "details"
+        ]
+      },
+      "UpdateProductDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Galazy Tab S7"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet."
+          },
+          "price": {
+            "type": "number",
+            "example": 799.99
+          },
+          "stock": {
+            "type": "number",
+            "example": 100
+          },
+          "category": {
+            "type": "string",
+            "example": "tablet"
+          },
+          "brand": {
+            "type": "string",
+            "example": "Samsung"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "USD"
+          },
+          "thumbnail": {
+            "type": "string",
+            "example": "/images/tablet.png"
+          },
+          "details": {
+            "type": "string",
+            "example": "Lorem ipsum dolar sit amet, consectur elit..."
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "price",
+          "stock",
+          "category",
+          "brand",
+          "currencyCode",
+          "thumbnail",
+          "details"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/api/products": {
+      "post": {
+        "operationId": "ProductsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "ProductsController_findAll",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/products/{id}": {
+      "get": {
+        "operationId": "ProductsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No product found with ID"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "ProductsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "ProductsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
